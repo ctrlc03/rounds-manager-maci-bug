@@ -3,9 +3,10 @@ import logo from './logo.svg';
 import './App.css';
 import { Keypair } from 'maci-domainobjs';
 import { addPoint, r } from '@zk-kit/baby-jubjub';
+import { keccak256, toUtf8Bytes } from "ethers";
 
 function App() {
-  const NOTHING_UP_MY_SLEEVE = BigInt(124) % r;
+  const NOTHING_UP_MY_SLEEVE = BigInt(keccak256(toUtf8Bytes("Maci"))) % r;
 
   const [key, setKey] = useState("");
   useEffect(() => {
